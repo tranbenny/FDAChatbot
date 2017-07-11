@@ -1,5 +1,8 @@
+// node modules
+let Twit = require('twit');
+let fs = require('fs');
+
 let config = require('./config.js');
-const Twit = require('twit');
 
 // console.log(config);
 
@@ -13,7 +16,6 @@ let twitter = new Twit({
 let tweetStream = twitter.stream('statuses/sample');
 
 tweetStream.on('tweet', function(tweet) {
-  console.log('---');
-  console.log('screen_name', tweet.user.screen_name);
-  console.log('text:', tweet.text);
+  console.log(tweet.user.screen_name);
+  console.log(tweet.text);
 });
