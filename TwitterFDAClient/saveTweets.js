@@ -3,6 +3,7 @@ let config = require('./config.js');
 
 let fs = require('fs');
 
+
 let twitter = new Twit({
   consumer_key: config['consumer_key'],
   consumer_secret: config['consumer_secret'],
@@ -10,21 +11,17 @@ let twitter = new Twit({
   access_token_secret: config['access_token_secret']
 });
 
-let params = {
-  q: 'from:FDArecalls',
-  count: 100
+let options = {
+  screen_name: 'FDArecalls',
+  count: 200
 };
 
-twitter.get('search/tweets', params)
-  .catch(function(err) {
-    console.log('error occured', err.stack);
-  })
-  .then(function(result) {
-    console.log(result.data['statuses'].length);
-    fs.writeFile('./tmp/samples', JSON.stringify(result), function(err) {
-      if (err) {
-        return console.log(err);
-      }
-      console.log('file was saved');
-    });
-  });
+twitter.get('statuses/user_timeline', options, function(err, data) {
+  if (err) {
+    console.log('ERROR OCCURED');
+  }
+  // for (let i = 0; i < data.length; i++) {
+  //   console.log(data[i].text);
+  // }
+  console.log(data.length);
+});
