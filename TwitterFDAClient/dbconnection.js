@@ -1,3 +1,8 @@
+/**
+ * Main file for performing read/writes to DynamoDB database
+ * @type {[type]}
+ */
+
 let config = require('./config.js');
 let AWS = require('aws-sdk');
 

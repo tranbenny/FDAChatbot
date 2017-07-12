@@ -16,6 +16,5 @@ let twitter = new Twit({
 let tweetStream = twitter.stream('statuses/sample');
 
 tweetStream.on('tweet', function(tweet) {
-  console.log(tweet.user.screen_name);
-  console.log(tweet.text);
+  console.log(tweet);
 });
