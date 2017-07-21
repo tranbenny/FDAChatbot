@@ -1,9 +1,8 @@
-// node modules
 let Twit = require('twit');
 let fs = require('fs');
 
+let TweetModel = require('./TweetModel.js');
 let config = require('./config.js');
-
 
 
 let twitter = new Twit({
@@ -11,10 +10,4 @@ let twitter = new Twit({
   consumer_secret: config['consumer_secret'],
   access_token: config['access_token'],
   access_token_secret: config['access_token_secret']
-});
-
-let tweetStream = twitter.stream('statuses/sample');
-
-tweetStream.on('tweet', function(tweet) {
-  console.log(tweet);
 });
