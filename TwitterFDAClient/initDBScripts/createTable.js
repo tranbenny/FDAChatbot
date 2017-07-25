@@ -6,7 +6,7 @@ let params = {
       { AttributeName: "id", KeyType: "HASH"}
     ],
     AttributeDefinitions: [
-      { AttributeName: "id", AttributeType: "S"}
+      { AttributeName: "id", AttributeType: "N"}
     ],
     ProvisionedThroughput: {
       ReadCapacityUnits: 10,

@@ -2,19 +2,35 @@
  * [exports description]
  * @type {[type]}
  */
+let dbconnection = require('../util/dbconnection');
+const tableName = "FDATweets";
+
 
 class TweetModel {
 
   constructor(tweet) {
     this.id = tweet.id;
-    this.tweet = tweet.text;
+    this.body = tweet['text'];
     this.timestamp = tweet.dateCreated;
-    this.url = findUrl(this.tweet);
+    this.url = this.findUrl(this.body);
   }
 
-  findUrl(tweet) {
-    let startIndex = tweet.indexOf('https');
-    return tweet.substring(startIndex, tweet.length);
+  findUrl(tweetText) {
+    let startIndex = tweetText.indexOf('https');
+    return tweetText.substring(startIndex, tweetText.length);
+  }
+
+  save() {
+    let params = {
+      TableName: "FDATweets",
+      Item: {
+        "id": this.id,
+        "body": this.body,
+        "timestamp": this.timestamp,
+        "url": this.url
+      }
+    };
+    dbconnection.save(params);
   }
 
 }

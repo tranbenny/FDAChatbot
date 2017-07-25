@@ -30,7 +30,7 @@ function saveValues(params) {
     if (err) {
       console.error("Unable to insert values. Error JSON:", JSON.stringify(err, null, 2));
     } else {
-      console.log("PutItem succeeded");
+      console.log(params.id + " added successfully");
     }
   })
 }

@@ -1,8 +1,7 @@
 let Twit = require('twit');
 let fs = require('fs');
 
-let TweetModel = require('./TweetModel.js');
-let config = require('./config.js');
+let config = require('../config/config.js');
 
 
 let twitter = new Twit({
@@ -11,3 +10,5 @@ let twitter = new Twit({
   access_token: config['access_token'],
   access_token_secret: config['access_token_secret']
 });
+
+module.exports = twitter;
