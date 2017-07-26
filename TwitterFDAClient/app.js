@@ -2,9 +2,7 @@
 let Twit = require('twit');
 let fs = require('fs');
 
-let config = require('./config.js');
-
-
+let config = require('./config/config.js');
 
 let twitter = new Twit({
   consumer_key: config['consumer_key'],
@@ -14,6 +12,9 @@ let twitter = new Twit({
 });
 
 let tweetStream = twitter.stream('statuses/sample');
+// let tweetStream = twitter.stream('user', {
+//   'follow': [config['bennyUserId']]
+// });
 
 tweetStream.on('tweet', function(tweet) {
   console.log(tweet);
